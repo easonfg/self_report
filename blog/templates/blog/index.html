@@ -1,0 +1,113 @@
+{% load static %}
+
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+
+  <link rel="stylesheet" href="{% static 'js/bower_components/bootstrap/dist/css/bootstrap.css' %}">
+  <link rel="stylesheet" href="{% static 'css/style.css' %}">
+  <link rel="stylesheet" href="{% static 'css/blog.css' %}">
+    <!-- Custom styles for this template -->
+    <link rel="stylesheet" href="{% static 'css/stickyfooter.css' %}">
+
+</head>
+<body>
+
+
+    <!-- Fixed navbar -->
+    <nav class="navbar navbar-default navbar-fixed-top">
+      <div class="container">
+        <div class="navbar-header">
+          <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
+            <span class="sr-only">Toggle navigation</span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+          </button>
+          <a class="navbar-brand" href="#"><strong style="font-size: 125%;">Clairvoyance</strong></a>
+        </div>
+        <div id="navbar" class="navbar-collapse collapse">
+        <!--
+          <ul class="nav navbar-nav">
+            <li class="active"><a href="#">Home</a></li>
+            <li><a href="#about">About</a></li>
+            <li><a href="#contact">Contact</a></li>
+            <li class="dropdown">
+              <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Dropdown <span class="caret"></span></a>
+              <ul class="dropdown-menu">
+                <li><a href="#">Action</a></li>
+                <li><a href="#">Another action</a></li>
+                <li><a href="#">Something else here</a></li>
+                <li role="separator" class="divider"></li>
+                <li class="dropdown-header">Nav header</li>
+                <li><a href="#">Separated link</a></li>
+                <li><a href="#">One more separated link</a></li>
+              </ul>
+            </li>
+          </ul>
+          <ul class="nav navbar-nav navbar-right">
+            <li><a href="../navbar/">Default</a></li>
+            <li><a href="../navbar-static-top/">Static top</a></li>
+            <li class="active"><a href="./">Fixed top <span class="sr-only">(current)</span></a></li>
+          </ul>
+          -->
+        </div><!--/.nav-collapse -->
+      </div>
+    </nav>
+
+<br></br>
+
+  <main class="container">
+
+
+      <h>Time Events (<span data-bind="text: cond_report().length"></span>)</h2>
+
+      <table>
+          <thead><tr>
+              <th></th><th>Descriptions</th>
+          </tr></thead>
+          <tbody data-bind="foreach: cond_report">
+              <tr>
+                  <td><select id='input_type' data-bind="options: $root.availableConditions, value: condition, optionsText: 'cond_type'"></select></td>
+                  <!-- <td><input data-bind="value: name" /></td> -->
+                  <td><input id='descriptions' type="text" style="width:200px;" data-bind=" value: name, valueUpdate: 'afterkeydown'" /></td>
+              <!--    <td data-bind="text: formattedPrice"></td> -->
+                  <td><a href="#" data-bind="click: $root.removeSeat">Remove</a></td>
+
+              </tr>
+          </tbody>
+      </table>
+
+      <button data-bind="click: addSeat">Add Event</button>
+
+
+      <h3 data-bind="visible: string_output() != ''">
+          <span data-bind="text: string_output()"></span>
+      </h3>
+
+      <ul></ul>
+
+<br></br>
+<button id = 'submit_data' type="button" class="btn btn-block btn-primary">Submit</button>
+<br></br>
+  </main>
+
+      <footer class = 'footer'>
+            <div class="container">
+              <p class="text-muted credit">
+                <span i18n:translate="">Developed by the</span>
+          <a href="http://healthsciences.ucsd.edu/som/dbmi/people/faculty/Pages/xiaoqian-jiang.aspx" i18n:translate="">Jiang Lab</a>.
+              </p>
+            </div>
+          </footer>
+
+          <script type="text/javascript"  src="{% static 'js/bower_components/d3/d3.min.js' %}"></script>
+          <script type="text/javascript"  src="{% static 'js/bower_components/jquery/dist/jquery.js' %}"></script>
+          <script type="text/javascript"  src="{% static 'js/bower_components/knockout/dist/knockout.js' %}"></script>
+          <script type="text/javascript"  src="{% static 'js/bower_components/knockout/dist/knockout.debug.js' %}"></script>
+          <script type="text/javascript"  src="{% static 'js/self_report.js' %}"></script>
+
+
+</body>
+</html>

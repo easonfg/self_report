@@ -1,0 +1,73 @@
+{% load static %}
+
+<html>
+<head>
+<title>Create Dynamic form Using JavaScript - Demo Preview</title>
+<meta name="robots" content="noindex, nofollow" />
+
+<script type="text/javascript"  src="{% static 'form.js' %}"></script>
+
+<link rel="stylesheet" href="{% static 'form.css' %}">
+<link rel="stylesheet" href="{% static 'css/bootstrap.min.css' %}">
+</head>
+<body>
+<div class ="main_content">
+ <!--
+----------------------------------------------------------------------------------------
+Header div.
+----------------------------------------------------------------------------------------
+-->
+
+{% block content %}
+    <!-- Fixed navbar -->
+  <div class="container-fluid">
+    <!-- Brand and toggle get grouped for better mobile display -->
+    <div class="navbar-header">
+      <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1" aria-expanded="false">
+        <span class="sr-only">Toggle navigation</span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+      </button>
+      <a class="navbar-brand" href="#">Clairvoyance</a>
+    </div>
+{% endblock %}
+<!--
+--------------------------------------------------------------------------------------
+This div is for the buttons. When user click on buttons, respective field will appear.
+---------------------------------------------------------------------------------------
+-->
+
+<div class="two">
+<h4>Frequently Used Form Fields</h4>
+<button onclick="SymptomsFunction()">Symptoms</button><br/>
+<button onclick="DiagnosisFunction()">Diagnosis</button><br/>
+<button onclick="TreatmentFunction()">Treatment</button><br/>
+<!-- <button onclick="textareaFunction()">Message</button> -->
+<button onclick="resetElements()">Reset</button>
+</div>
+<!--
+----------------------------------------------------------------------------------------
+This div is meant to display final form.
+----------------------------------------------------------------------------------------
+-->
+
+<div class="three">
+<h2>Your Dynamic Form!</h2>
+<form action="#" method="get" id="mainform">
+<span id="myForm">
+</span>
+<p></p>
+<input type="submit" value="Submit"></input>
+</form>
+</div>
+ <!--
+----------------------------------------------------------------------------------------
+Footer div.
+----------------------------------------------------------------------------------------
+-->
+
+</div>
+
+</body>
+</html>

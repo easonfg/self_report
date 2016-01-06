@@ -1,0 +1,29 @@
+{% load static %}
+
+<html>
+<head>
+<title>testing</title>
+<meta name="robots" content="noindex, nofollow" />
+
+<script type="text/javascript"  src="{% static 'form.js' %}"></script>
+
+<link rel="stylesheet" href="{% static 'form.css' %}">
+</head>
+<body>
+
+<form class="your-name" method="post">{% csrf_token %}
+{# Include the hidden fields #}
+{% for hidden in form.hidden_fields %}
+{{ hidden }}
+{% endfor %}
+{# Include the visible fields #}
+{% for field in form.visible_fields %}
+    <div class="fieldWrapper">
+        {{ field.errors }}
+        {{ field.label_tag }} {{ field }}
+    </div>
+{% endfor %}
+<button type="submit" class="save btn btn-default">Save</button>
+</form>
+</body>
+</html>

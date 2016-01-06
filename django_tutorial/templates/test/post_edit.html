@@ -1,0 +1,28 @@
+
+{% extends 'test/base.html' %}
+
+{% block content %}
+<script>
+form_count = $("[name=extra_field_count]").val(form_count);
+<!--  get extra form count so we know what index to use for the next item. -->
+$("#add_another").click(function() {
+    element = $('<input type="text"/>');
+    element.attr('name', 'extra_field_' + form_count);
+    $("#forms").append(element);
+   <!--  // build element and append it to our forms container -->
+
+    form_count ++;
+    $("[name=extra_field_count]").val(form_count);
+<!--     // increment form count so our view knows to populate  -->
+<!--     // that many fields for validation -->
+})
+
+</script>
+<form>
+<div id="forms">
+    {{ form.as_p }}
+</div>
+<button type = 'button', id="add_another">add another</button>
+<input type="submit" />
+</form>
+{% endblock %}
